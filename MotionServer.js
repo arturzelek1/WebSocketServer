@@ -12,7 +12,11 @@ wss.on("connection", (ws) => {
     try {
       const data = JSON.parse(messageString);
 
-      if (data.type === "motion") {
+      if (
+        data.type === "motion" ||
+        data.type === "rotation" ||
+        data.type === "GameRotation"
+      ) {
         console.log("Odebrane dane ruchu:", data);
 
         wss.clients.forEach((client) => {
